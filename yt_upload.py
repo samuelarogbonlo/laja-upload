@@ -5,7 +5,7 @@ from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor
 
 # Dropbox API token
-DROPBOX_ACCESS_TOKEN = 'your_dropbox_access_token_here'
+DROPBOX_ACCESS_TOKEN = ''
 CHUNK_SIZE = 8 * 1024 * 1024  # 8MB chunks
 
 def download_first_video(playlist_url):
@@ -50,7 +50,7 @@ def main():
     playlist_url = 'https://www.youtube.com/playlist?list=PLn_sJONMDFW8oc2tG8_wmTMrhdwZscRdq'
     dbx = dropbox.Dropbox(DROPBOX_ACCESS_TOKEN, timeout=None)
 
-    # Create a directory for downloaded videos
+    # Create a directory for downloaded video
     if not os.path.exists('videos'):
         os.makedirs('videos')
 
