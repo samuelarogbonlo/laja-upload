@@ -5,7 +5,7 @@ from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor
 
 # Dropbox API token
-DROPBOX_ACCESS_TOKEN = ''
+DROPBOX_ACCESS_TOKEN = 'your_dropbox_access_token_here'
 CHUNK_SIZE = 8 * 1024 * 1024  # 8MB chunks
 
 def download_first_video(playlist_url):
@@ -42,6 +42,9 @@ def upload_to_dropbox(file_path, dropbox_path, dbx):
                     cursor.offset = f.tell()
                     pbar.update(CHUNK_SIZE)
     print(f'Uploaded: {file_path} to {dropbox_path}')
+    # Delete the local file after uploading
+    os.remove(file_path)
+    print(f'Deleted local file: {file_path}')
 
 def main():
     playlist_url = 'https://www.youtube.com/playlist?list=PLn_sJONMDFW8oc2tG8_wmTMrhdwZscRdq'
